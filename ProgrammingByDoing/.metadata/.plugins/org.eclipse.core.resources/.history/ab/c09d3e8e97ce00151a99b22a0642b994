@@ -1,0 +1,10 @@
+import javax.swing.JFrame;
+
+public class BoringWindow {
+
+	public static void main(String[] args) {
+		JFrame f = new BoringWidow();
+
+	}
+
+}

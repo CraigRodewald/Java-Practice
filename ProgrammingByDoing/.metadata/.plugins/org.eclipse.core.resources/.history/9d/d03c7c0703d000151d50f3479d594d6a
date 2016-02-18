@@ -1,0 +1,28 @@
+
+public class AreaCalculator {
+	public static void menu(String[] menuItem)
+	{
+		for (int i = 0; i < menuItem.length; i++) 
+		{
+			System.out.println(menuItem[i]);
+		}
+	}
+	
+	public static void border(String border)
+	{
+		for (int i = 0; i < 20; i++) {
+			System.out.print(border);
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		String borderDesign = "-=";
+		String[] menuList = new String[] {"1) Triangle", "2) Rectangle", "3) Square", "4) Circle", "5) Quit"};
+		
+		border(borderDesign);
+		menu(menuList);
+		
+		
+	}
+}

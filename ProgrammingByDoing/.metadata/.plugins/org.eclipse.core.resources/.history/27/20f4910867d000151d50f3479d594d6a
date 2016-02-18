@@ -1,0 +1,90 @@
+import java.util.Scanner;
+
+public class Calculator {
+	
+	public static String getOperation(){
+		//Initialize variables
+		Scanner userInput = new Scanner(System.in);
+		String operation;
+		
+		// Get user input
+		System.out.println("Enter the operation you want to perform:");
+		System.out.println("Seperate the opperand and numbers with spaces:");
+		operation = userInput.nextLine();
+		
+		// Close Scanner and return variable
+		userInput.close();
+		return operation;
+	}
+	
+	public static String[] convertToArray(String equation){
+		// Initialize variables
+		String[] equationArray = equation.split(" ");
+		
+		return equationArray;
+	}
+
+	public static void main(String[] args) {
+		// Initialize variables
+		String equation;
+		String[] equationArray;
+		
+		// Get user input
+		equation = getOperation();
+		//System.out.println(equation);  //Prints the return to screen for debug
+		
+		equationArray = convertToArray(equation);
+		/*for (int i = 0; i < equationArray.length; i++) {
+			System.out.println(equationArray[i]);
+		}*/  //Shows the string was converted to the correct format of number - operand - number
+		boolean number1 = Numeric.isNumeric(equationArray[0]);
+		if (number1 == true) {
+			number1 = Numeric.isDouble(equationArray[0]);
+		}
+		System.out.println(number1);
+		
+
+	}
+
+}
+
+abstract class Numeric
+{
+	public static boolean isNumeric( String s )
+	{
+		return ( isDouble(s) || isInteger(s) );
+	}
+
+	public static boolean isDouble( String s )
+	{
+		double n = 0;
+		try
+		{
+			n = Double.valueOf( s );
+		}
+
+		catch ( NumberFormatException e )
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	public static boolean isInteger( String s )
+	{
+		int n = 0;
+		try
+		{
+			n = Integer.valueOf( s );
+		}
+
+		catch ( NumberFormatException e )
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+}
