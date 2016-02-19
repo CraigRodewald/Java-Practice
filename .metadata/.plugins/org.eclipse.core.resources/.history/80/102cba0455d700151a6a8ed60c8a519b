@@ -1,0 +1,21 @@
+import java.util.ArrayList;
+
+public class FibonacciSequence {
+	public static void main(String[] args) {
+		int number = 1;
+		int maxValue = 4000000;
+		int index = 0;
+		ArrayList<Integer> obj = new ArrayList<Integer>();
+		
+		while (number < maxValue) {
+			obj.add(number);
+			System.out.println("Fibonacci " + obj);
+			number = number + obj.get(index + 1);
+			System.out.println("Number " + number);
+			index++;
+		}
+		
+		System.out.println(obj);
+		//System.out.println(obj.get(0));
+	}
+}
