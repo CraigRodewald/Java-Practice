@@ -1,0 +1,39 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class BlackJack {
+	
+	public static int getRandomCard(Random rand){
+		int card = rand.nextInt(10)+ 2;
+		
+		return card;
+	}
+	
+	public static void display(){
+		
+	}
+	public static void main(String[] args) {
+		int playerCard1;
+		int playerCard2;
+		int playerTotal = 0;
+		int dealerCard1;
+		int dealerCard2;
+		int dealerTotal = 0;
+		
+		Random rand = new Random();
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("Welcome to my blackjack program!\n");
+		playerCard1 = getRandomCard(rand);
+		playerCard2 = getRandomCard(rand);
+		dealerCard1 = getRandomCard(rand);
+		dealerCard2 = getRandomCard(rand);
+		
+		playerTotal = playerCard1 + playerCard2;
+		
+		System.out.println("Ypu get a " + playerCard1 + " and a " + playerCard2 + ".");
+		System.out.println("Your total is " + playerTotal + ".");
+		System.out.println(dealerCard2);
+		
+	}
+}
