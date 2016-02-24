@@ -1,0 +1,16 @@
+import java.util.Random;
+
+// This class is going to lay the foundation for the actual game play of BlackJack
+
+public class GamePlay {
+	
+	// Generates an random card
+	public int getRandomCard(Random rand){
+		int card;
+		
+		card = rand.nextInt(10)+2;
+		
+		return card;
+	}
+
+}

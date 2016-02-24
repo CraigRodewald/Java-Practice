@@ -1,105 +1,121 @@
-import java.util.Random;
 import java.util.Scanner;
 
 public class BlackJack {
 
-	public static int getRandomCard(Random rand) {
-		int card = rand.nextInt(10) + 2;
-
-		return card;
-	}
-
-	public static int[] playersTurn(Random rand, Scanner scan) {
-		int playerCard1;
-		int playerCard2;
-		int playerTotal = 0;
-		int dealerCard1 = 0;
-		int[] playerReturn = new int[2];
-		String hit = "hit";
-		String userInput;
-
-		playerCard1 = getRandomCard(rand);
-		playerCard2 = getRandomCard(rand);
-		dealerCard1 = getRandomCard(rand);
-
-		playerTotal = playerCard1 + playerCard2;
-
-		System.out.println("You get a " + playerCard1 + " and a " + playerCard2 + ".");
-		System.out.println("Your total is " + playerTotal + ".\n");
-		System.out.println(
-				"The dealer has a " + dealerCard1 + " showing, and a card hidden.\nHis total his hidden, too.");
-
-		userInput = getUserInput(scan);
-		do {
-			if (userInput.equals(hit)) {
-				playerCard1 = getRandomCard(rand);
-				playerTotal = playerTotal + playerCard1;
-
-				if (playerTotal > 21) {
-					System.out.println("You busted!");
-					break;
-				} else {
-					System.out.println("You drew a " + playerCard1);
-					System.out.println("Your total is " + playerTotal);
-					userInput = getUserInput(scan);
-				}
-			}
-		} while (userInput == "hit");
-
-		playerReturn[0] = dealerCard1;
-		playerReturn[1] = playerTotal;
-
-		return playerReturn;
-	}
-
-	public static void dealersTurn(Random rand, int dealerCard1) {
-		int dealerCard2;
-		int dealerTotal = 0;
-
-		dealerCard2 = getRandomCard(rand);
-
-		dealerTotal = dealerCard1 + dealerCard2;
-
-		System.out.println("\nOkay, dealer's turn.");
-		System.out.println("His hidden card was a " + dealerCard2 + ".");
-		System.out.println("His total was " + dealerTotal);
-
-		do {
-
-			if (dealerTotal <= 16) {
-				dealerCard2 = getRandomCard(rand);
-			}
-
-			System.out.println("\nThe dealer drew a " + dealerCard2);
-			dealerTotal = dealerTotal + dealerCard2;
-			System.out.println("His new total is " + dealerTotal);
-		} while (dealerTotal <= 16);
-	}
-
-	public static String getUserInput(Scanner scan) {
-		String userInput = "init";
-		String hit = "hit";
-		String stay = "stay";
-
-		while (!userInput.equals(hit) || !userInput.equals(stay)) {
-			System.out.println("\nWould you like to \"hit\" or \"stay\"?");
-			userInput = scan.next();
-			if (userInput.equals(hit) || userInput.equals(stay)) {
+	public static void main(String[] args) {
+		// Initialize variables
+		double playerMoney = 100.00;
+		Scanner userInput = new Scanner(System.in);
+		// Welcome message
+		Display.welcomeMessage();
+		
+		// Create out playing deck
+		Deck playingDeck = new Deck();
+		playingDeck.createFullDeck();
+		playingDeck.shuffle();
+		// Create a deck for the player
+		Deck playerDeck = new Deck();
+		
+		Deck dealerDeck = new Deck();
+		
+		// Game Loop
+		while (playerMoney > 0) {
+			// Play on
+			// Take the player's bet
+			System.out.println("You have $" + playerMoney + ", how much would you like to bet?");
+			double playerBet = userInput.nextDouble();
+			if (playerBet > playerMoney) {
+				System.out.println("You cannot bet more than you have.  Please leave.");
 				break;
 			}
+			
+			boolean endRound = false;
+			
+			// Start dealing
+			// Player gets two cards
+			playerDeck.draw(playingDeck);
+			playerDeck.draw(playingDeck);
+			
+			//Dealer gets two cards
+			dealerDeck.draw(playingDeck);
+			dealerDeck.draw(playingDeck);
+			
+			while(true){
+				System.out.println("Your hand:");
+				System.out.println(playerDeck.toString());
+				System.out.println("Your deck is valued at:" + playerDeck.cardsValue());
+				
+				// Display Dealer Hand
+				System.out.println("Dealer Hand: " + dealerDeck.getCard(0).toString() + " and [hidden]");
+				
+				// What does the player want to do
+				System.out.println("Would you like to (1) hit or (2) stay");
+				int response = userInput.nextInt();
+				
+				//They hit
+				if (response == 1) {
+					playerDeck.draw(playingDeck);
+					System.out.println("You draw a:" + playerDeck.getCard(playerDeck.deckSize()-1).toString());
+					
+					// Bust if over 21
+					if (playerDeck.cardsValue() > 21) {
+						System.out.println("Bust! Currently valued at:" + playerDeck.cardsValue());
+						playerMoney -= playerBet;
+						endRound = true;
+						break;
+					}
+				}
+				
+				if(response == 2){
+					break;
+				}
+			}
+			
+			// Reveal dealers cards
+			System.out.println("Dealer Cards: " + dealerDeck.toString());
+			// See id dealer has more points than player
+			if((dealerDeck.cardsValue() > playerDeck.cardsValue())&& endRound == false){
+				System.out.println("Dealer beats you!");
+				playerMoney -= playerBet;
+				endRound = true;
+			}
+			// Dealer draws at 16, stays at 17+
+			while((dealerDeck.cardsValue() < 17)&& endRound == false){
+				dealerDeck.draw(playingDeck);
+				System.out.println("Dealer draws: " + dealerDeck.getCard(dealerDeck.deckSize()-1).toString());
+			}
+			
+			//Display total value for Dealer
+			System.out.println("Dealer's hand is valued at: " + dealerDeck.cardsValue());
+			// Determine if dealer busted
+			if ((dealerDeck.cardsValue() > 21)&& endRound == false) {
+				System.out.println("Dealer busts! You win.");
+				playerMoney += playerBet;
+				endRound = true;
+			}
+			
+			// Determine push
+			if ((playerDeck.cardsValue()== dealerDeck.cardsValue()) && endRound == false) {
+				System.out.println("Push");
+				endRound = true;
+			}
+			
+			if ((playerDeck.cardsValue() > dealerDeck.cardsValue())&& endRound == false) {
+				System.out.println("You wein the hand!");
+				playerMoney += playerBet;
+				endRound = true;
+			}
+			else if (endRound == false) {
+				System.out.println("You use the hand.");
+				playerMoney -= playerBet;
+				endRound = true;
+			}
+			
+			playerDeck.moveAllToDeck(playingDeck);
+			dealerDeck.moveAllToDeck(playingDeck);
+			System.out.println("End of hand.");
 		}
-
-		return userInput;
-	}
-
-	public static void main(String[] args) {
-		Random rand = new Random();
-		Scanner scan = new Scanner(System.in);
-
-		System.out.println("Welcome to my blackjack program!");
-
-		int dealerCard1[] = playersTurn(rand, scan);
-		dealersTurn(rand, dealerCard1[0]);
-
+		
+		System.out.println("Game over!  You are out of money. :(");
 	}
 }
