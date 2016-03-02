@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class InventorySystem {
+	public static void main(String[] args) {
+		
+		Scanner userInput = new Scanner(System.in);
+		// Welcome message
+		System.out.println("Welcome to my Inventory System");
+		
+		// Create inventory
+		Item inventoryList = new Item();
+		
+		System.out.println("Items in your inventory");
+		
+		
+		if(inventoryList.items.isEmpty()){
+			System.out.println("You have nothing in your inventory list.");
+			//System.out.println("Would you like to add an item?  (1) Yes or (2) No");
+			//int response = userInput.nextInt();
+			//System.out.println(response);
+		}
+	}
+}

@@ -9,7 +9,7 @@ public class BlackJack {
 		// Welcome message
 		Display.welcomeMessage();
 		
-		// Create out playing deck
+		// Create our playing deck
 		Deck playingDeck = new Deck();
 		playingDeck.createFullDeck();
 		playingDeck.shuffle();
@@ -101,7 +101,7 @@ public class BlackJack {
 			}
 			
 			if ((playerDeck.cardsValue() > dealerDeck.cardsValue())&& endRound == false) {
-				System.out.println("You wein the hand!");
+				System.out.println("You win the hand!");
 				playerMoney += playerBet;
 				endRound = true;
 			}
@@ -117,5 +117,6 @@ public class BlackJack {
 		}
 		
 		System.out.println("Game over!  You are out of money. :(");
+		userInput.close();
 	}
 }
