@@ -8,13 +8,14 @@ public class CheckLoginInformation {
 	public static Boolean checkUsername(JTextField txtUsername){
 		String username = txtUsername.getText();
 		System.out.println(username);
-		return (username.equals("Admin"));
+		return (username == "Admin");
+		//return txtUsername.equals(username);
 	}
 	
 	public static Boolean checkPassowd(JTextField txtPassword, JTextField txtUsername){
 		String password = txtPassword.getText();
 		System.out.println(password);
-		return password.equals("password");
+		return password == "password";
 	}
 
 }

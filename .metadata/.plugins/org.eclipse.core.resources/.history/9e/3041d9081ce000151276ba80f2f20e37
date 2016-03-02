@@ -16,7 +16,6 @@ public class LoginClass {
 	private JFrame frame;
 	private JTextField txtPassword;
 	private JTextField txtUsername;
-	private int loginAttempts = 3;
 
 	/**
 	 * Launch the application.
@@ -53,7 +52,6 @@ public class LoginClass {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				loginAttempts--;
 				Boolean loginUser = CheckLoginInformation.checkUsername(txtUsername);
 				Boolean loginPass = CheckLoginInformation.checkPassowd(txtPassword, txtUsername);
 				

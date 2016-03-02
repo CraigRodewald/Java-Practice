@@ -6,15 +6,16 @@ public class CheckLoginInformation {
 	// User will be allowed to enter a correct username and password 3 times before an error message will show and exit program
 	
 	public static Boolean checkUsername(JTextField txtUsername){
-		String username = txtUsername.getText();
+		String username = txtUsername.toString();
 		System.out.println(username);
-		return (username.equals("Admin"));
+		return (username == "Admin");
+		//return txtUsername.equals(username);
 	}
 	
 	public static Boolean checkPassowd(JTextField txtPassword, JTextField txtUsername){
-		String password = txtPassword.getText();
+		String password = txtPassword.toString();
 		System.out.println(password);
-		return password.equals("password");
+		return password == "password";
 	}
 
 }

@@ -14,7 +14,7 @@ public class CheckLoginInformation {
 	public static Boolean checkPassowd(JTextField txtPassword, JTextField txtUsername){
 		String password = txtPassword.getText();
 		System.out.println(password);
-		return password.equals("password");
+		return password == "password";
 	}
 
 }
