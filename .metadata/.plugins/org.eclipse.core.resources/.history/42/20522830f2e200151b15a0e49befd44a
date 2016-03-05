@@ -1,0 +1,20 @@
+import javax.swing.JTextField;
+
+public class CheckLoginInformation {
+	
+	
+	//Checks user input against the name stored as Admin 
+	public static Boolean checkUsername(JTextField txtUsername){
+		String username = txtUsername.getText();
+		System.out.println(username);
+		return (username.equals("Admin"));
+	}
+	
+	// Checks user input against the password
+	public static Boolean checkPassowd(JTextField txtPassword, JTextField txtUsername){
+		String password = txtPassword.getText();
+		System.out.println(password);
+		return password.equals("password");
+	}
+
+}

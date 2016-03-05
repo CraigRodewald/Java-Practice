@@ -1,0 +1,7 @@
+
+public class LoginCridentialCheck {
+	void loginCheck(){
+		
+	}
+
+}
