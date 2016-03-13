@@ -5,7 +5,8 @@ public class Deck {
 	
 	private ArrayList<Card> cards;
 	
-	public Deck(){
+	public Deck()
+	{
 		this.cards = new ArrayList<Card>();
 	}
 	

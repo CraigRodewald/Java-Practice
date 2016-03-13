@@ -80,7 +80,7 @@ public class LoginScreen {
 		lblPassword.setBounds(111, 147, 69, 14);
 		frame.getContentPane().add(lblPassword);
 
-		JLabel lblTriggerplz = new JLabel("TriggerPLZ Bank");
+		JLabel lblTriggerplz = new JLabel("ATM Bank");
 		lblTriggerplz.setFont(new Font("Coolvetica Rg", Font.PLAIN, 25));
 		lblTriggerplz.setBounds(134, 25, 172, 54);
 		frame.getContentPane().add(lblTriggerplz);

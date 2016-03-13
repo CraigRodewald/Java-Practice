@@ -11,11 +11,7 @@ public class InventorySystem {
 		Item inventoryList = new Item();
 		
 		System.out.println("What would you like to add?");
-		Item itemToInventory = userInput.nextLine();
-		
-		Item.getClass();
-		
-		
+		String itemToInventory = userInput.nextLine();
 		
 	}
 }
