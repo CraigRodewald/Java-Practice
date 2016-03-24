@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename local variable &apos;weight&apos; in &apos;BMIcalculator.main(...)&apos; to &apos;weightLbs&apos;&#x0D;&#x0A;- Original project: &apos;BMI Calculator&apos;&#x0D;&#x0A;- Original element: &apos;BMIcalculator.main(String[]).weight&apos;&#x0D;&#x0A;- Renamed element: &apos;weight&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;weight&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{BMIcalculator.java[BMIcalculator~main~\[QString;@weight!171!184!178!183!D!0!false" name="weightLbs" references="true" stamp="1454951421187" version="1.0"/>
-</session>

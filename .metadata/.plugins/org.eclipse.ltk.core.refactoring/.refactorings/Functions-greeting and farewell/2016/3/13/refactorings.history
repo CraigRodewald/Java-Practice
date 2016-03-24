@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;Functions.sayGoofbbye()&apos; to &apos;sayGoodbye&apos;&#x0D;&#x0A;- Original project: &apos;Functions-greeting and farewell&apos;&#x0D;&#x0A;- Original element: &apos;Functions.sayGoofbbye()&apos;&#x0D;&#x0A;- Renamed element: &apos;Functions.sayGoodbye()&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;sayGoofbbye&apos;" flags="589826" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;{Functions.java[Functions~sayGoofbbye" name="sayGoodbye" references="true" stamp="1458844306015" version="1.0"/>
+</session>

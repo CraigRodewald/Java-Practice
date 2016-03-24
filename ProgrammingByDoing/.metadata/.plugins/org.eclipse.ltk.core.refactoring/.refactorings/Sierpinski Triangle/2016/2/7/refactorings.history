@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename method &apos;SierpinskiTriangle.sierpinski(...)&apos; to &apos;paint&apos;&#x0D;&#x0A;- Original project: &apos;Sierpinski Triangle&apos;&#x0D;&#x0A;- Original element: &apos;SierpinskiTriangle.sierpinski(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;SierpinskiTriangle.paint(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;sierpinski&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;{SierpinskiTriangle.java[SierpinskiTriangle~sierpinski~QGraphics;" name="paint" references="true" stamp="1455064479521" version="1.0"/>
-</session>
